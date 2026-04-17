@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Posts | EcoTravel</title>
+<link href="style.css" rel="stylesheet">
+<style>
+  .posts-hero {
+    height: 40vh;
+    background: url('https://images.unsplash.com/photo-1498855926480-d98e83099315?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+  .posts-hero::after {
+    content: ''; position: absolute; inset: 0; background: rgba(3, 7, 18, 0.6); z-index: 1;
+  }
+  .posts-hero h1 {
+    font-size: 50px; z-index: 2; position: relative; color: white; margin: 0;
+  }
+  
+  .pin-grid {
+    column-count: 4;
+    column-gap: 20px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .pin-card {
+    background: rgba(20, 20, 30, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+  }
+  
+  .pin-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+  }
+  
+  .pin-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+
+  .pin-author {
+    color: var(--accent-primary);
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .pin-rating {
+    color: gold;
+    margin-bottom: 10px;
+  }
+
+  @media(max-width: 1200px) { .pin-grid { column-count: 3; } }
+  @media(max-width: 900px) { .pin-grid { column-count: 2; } }
+  @media(max-width: 600px) { .pin-grid { column-count: 1; } }
+</style>
+</head>
+<body style="background: var(--bg-color); color: var(--text-color);">
+<nav>
+<div class="logo">EcoTravel</div>
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="education.html">Education</a>
+<a href="sustainability.html">Sustainability</a>
+<a href="community.html">Community</a>
+<a href="posts.html" id="nav-posts-link">Posts</a>
+<a href="about.html">About</a>
+</div>
+<div class="auth-buttons">
+<button class="btn secondary" onclick="openLogin()">Login</button>
+<button class="btn primary" onclick="openSignup()">Sign Up</button>
+</div>
+</nav>
+
+<div class="posts-hero">
+  <h1>My Travel Journal</h1>
+</div>
+
+
+<div style="display: flex; justify-content: center; gap: 20px; z-index: 10; position: relative; margin-top: -30px; margin-bottom: 30px;">
+  <a href="posts.html" class="btn secondary" style="background: rgba(30, 41, 59, 0.8); margin: 0;">Global Feed</a>
+  <a href="myposts.html" class="btn primary" style="box-shadow: 0 10px 20px rgba(0,0,0,0.5); margin: 0;">My Posts</a>
+</div>
+<div class="pin-grid" id="my-posts-grid">
+  <!-- Dynamic Posts -->
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if(window.updateAuthState) window.updateAuthState();
+    if(window.loadMyPosts) window.loadMyPosts();
+  });
+</script>
+</body>
+</html>

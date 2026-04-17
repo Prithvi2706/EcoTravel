@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community | EcoTravel</title>
+<link href="style.css" rel="stylesheet">
+<style>
+  .community-hero {
+    height: 50vh;
+    background: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+  .community-hero::after {
+    content: ''; position: absolute; inset: 0; background: rgba(3, 7, 18, 0.7); z-index: 1;
+  }
+  .community-hero h1 {
+    font-size: 60px; z-index: 2; position: relative; color: white; margin: 0;
+  }
+  
+  .social-grid {
+    column-count: 3;
+    column-gap: 30px;
+    padding: 60px 0;
+  }
+  
+  .social-card {
+    background: rgba(11, 19, 32, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--surface-border);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+  }
+  
+  .social-card:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-primary);
+  }
+  
+  .social-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .social-author {
+    color: var(--accent-primary);
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  @media(max-width: 900px) { .social-grid { column-count: 2; } }
+  @media(max-width: 600px) { .social-grid { column-count: 1; } }
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">EcoTravel</div>
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="education.html">Education</a>
+<a href="sustainability.html">Sustainability</a>
+<a href="community.html">Community</a>
+<a href="posts.html" id="nav-posts-link">Posts</a>
+<a href="about.html">About</a>
+</div>
+</nav>
+
+<div class="community-hero">
+  <h1>A Thriving Global Network</h1>
+</div>
+
+<div class="container" style="max-width: 1400px; padding: 0 40px; margin: 0 auto;">
+  <div class="social-grid">
+    <div class="social-card">
+      <img src="https://picsum.photos/seed/hike_community/600/400" alt="Hike">
+      <div class="social-author">👤 Sarah J.</div>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 16px;">Just got back from the Patagonia trails. Knowing my trip supported local conservation efforts made it ten times more magical.</p>
+    </div>
+    
+    <div class="social-card">
+      <div class="social-author">👤 David & Lisa</div>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 16px;">We spent three weeks traversing the Swiss Alps Cabins. The solar-powered setups are absolutely insane in person. Recommend to everyone!</p>
+    </div>
+
+    <div class="social-card">
+      <img src="https://picsum.photos/seed/ocean_community/600/400" alt="Ocean">
+      <div class="social-author">👤 Keira W.</div>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 16px;">The Maldives Coral Tours were surreal. The guides actually let us participate in their coral seeding efforts.</p>
+    </div>
+    
+    <div class="social-card">
+      <div class="social-author">👤 Evan M.</div>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 16px;">The EcoTravel community forums helped me find the best sustainable gear for my Kyoto trip. Thanks guys!</p>
+    </div>
+    
+    <div class="social-card">
+      <img src="https://picsum.photos/seed/mountain_wanderer/600/400" alt="Mountain">
+      <div class="social-author">👤 The Wanderer</div>
+      <p style="color: var(--text-muted); line-height: 1.6; font-size: 16px;">Leave nothing but footprints. Our world is too beautiful to destroy for a photo-op. I'm so glad EcoTravel exists.</p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

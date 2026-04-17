@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1776176318759,
+    "destinationId": 12,
+    "author": "Aarav Patel",
+    "text": "My trip to the backwaters was absolutely magical. The serene environment, combined with the eco-friendly houseboat experience, made it an unforgettable journey. Waking up to the sound of birds and navigating through the calm waters was deeply rejuvenating. The local community was incredibly welcoming, sharing their sustainable fishing methods.",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944",
+    "date": "2026-04-14T14:18:38.759Z"
+  },
+  {
+    "id": 1776176318762,
+    "destinationId": 11,
+    "author": "Priya Sharma",
+    "text": "Visiting the Western Ghats changed my perspective on nature conservation. The dense forests are home to an incredible variety of flora and fauna. I spent days trekking through the hidden trails, guided by indigenous tribes who imparted their vast knowledge of the ecosystem. Beautiful picturesque landscapes with rich biodiversity.",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1593693411515-c20261bcad6e",
+    "date": "2026-04-14T14:18:38.761Z"
+  },
+  {
+    "id": 1776176318763,
+    "destinationId": 4,
+    "author": "Rahul Gupta",
+    "text": "The eco-retreat in the Himalayas exceeded all my expectations. Not only were the views of the snow-capped peaks breathtaking, but the resort's commitment to zero-waste and solar energy was truly inspiring. We engaged in tree-planting activities and learned about organic farming from the villagers.",
+    "rating": 5,
+    "image": "https://picsum.photos/seed/1473773508681-bc015fbe8e45/800/600",
+    "date": "2026-04-14T14:18:38.761Z"
+  },
+  {
+    "id": 1776176318764,
+    "destinationId": 6,
+    "author": "Neha Desai",
+    "text": "Exploring the heritage sites of Rajasthan while staying in restored havelis was a fantastic blend of history and sustainability. The attention to preserving water and promoting traditional crafts among the locals showcased a perfect model of responsible tourism. The intricate architecture was stunning, and the vibrant culture was mesmerizing.",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2",
+    "date": "2026-04-14T14:18:38.761Z"
+  }
+]

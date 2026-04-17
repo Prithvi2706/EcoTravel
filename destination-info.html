@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destination Info | EcoTravel</title>
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<nav>
+<div class="logo">EcoTravel</div>
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="education.html">Education</a>
+<a href="sustainability.html">Sustainability</a>
+<a href="community.html">Community</a>
+<a href="posts.html" id="nav-posts-link">Posts</a>
+<a href="about.html">About</a>
+</div>
+</nav>
+
+<div id="loader" style="text-align: center; padding: 100px;"><h2>Loading destination...</h2></div>
+
+<div id="dest-content" style="display: none;">
+  
+  <!-- Massive Hero Header -->
+  <div class="destination-hero">
+    <img id="detail-hero-img" src="" alt="Hero Image">
+    <div class="hero-overlay">
+      <h1 id="detail-title">Destination Title</h1>
+      <span class="score-badge main-score" id="detail-score">Eco Score: 100</span>
+    </div>
+  </div>
+
+  <div class="container" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+    
+    <div class="dest-info-section">
+      <p id="detail-desc" style="font-size: 22px; line-height: 1.8; color: var(--text-muted); margin-bottom: 60px;"></p>
+    </div>
+
+    <!-- Image Gallery -->
+    <h2 style="margin-bottom: 20px; font-size: 32px;">Image Gallery</h2>
+    <div class="image-gallery" id="detail-gallery">
+      <!-- Dynamically populated images -->
+    </div>
+
+    <!-- Eco-Travel Insider Tips Section -->
+    <div style="margin-top: 60px;">
+      <h2 style="margin-bottom: 20px; font-size: 32px;">Eco-Travel Insider Tips</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        
+        <div class="card" style="padding: 25px; text-align: left;">
+          <h3 style="color: var(--accent-primary); margin-bottom: 10px; font-size: 20px;">🌳 Avoid the Crowds</h3>
+          <p id="detail-less-crowded" style="color: var(--text-muted); line-height: 1.6;"></p>
+        </div>
+
+        <div class="card" style="padding: 25px; text-align: left;">
+          <h3 style="color: #f59e0b; margin-bottom: 10px; font-size: 20px;">⏱️ When to Avoid</h3>
+          <p id="detail-peak-times" style="color: var(--text-muted); line-height: 1.6;"></p>
+        </div>
+
+        <div class="card" style="padding: 25px; text-align: left;">
+          <h3 style="color: #3b82f6; margin-bottom: 10px; font-size: 20px;">🚲 Eco-Transport</h3>
+          <p id="detail-eco-transport" style="color: var(--text-muted); line-height: 1.6;"></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Map Section (Visible if logged in) -->
+    <div id="map-section" style="margin-top: 60px; display: none;">
+       <h2 style="margin-bottom: 20px; font-size: 32px;">Location Details</h2>
+       <div id="info-map-container" style="height: 400px; width: 100%; border-radius: 20px; border: 1px solid var(--surface-border);"></div>
+    </div>
+
+    <!-- Community Reviews -->
+    <div style="margin-top: 60px; margin-bottom: 100px;">
+      <h2 style="margin-bottom: 20px; font-size: 32px;">Community Reviews</h2>
+      <div id="reviewsContainer" class="reviews-list">
+        <!-- Popular from posts -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof loadDestinationDetails === 'function') {
+      loadDestinationDetails();
+    }
+  });
+</script>
+</body>
+</html>

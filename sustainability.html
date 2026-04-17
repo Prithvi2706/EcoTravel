@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustainability | EcoTravel</title>
+<link href="style.css" rel="stylesheet">
+<style>
+  .sustain-hero {
+    height: 50vh;
+    background: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+  .sustain-hero::after {
+    content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 1;
+  }
+  .sustain-hero h1 {
+    font-size: 60px; z-index: 2; position: relative; color: white; margin: 0;
+  }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: -60px; position: relative; z-index: 5;
+  }
+  .pillar-card {
+    background: rgba(11, 19, 32, 0.85); backdrop-filter: blur(20px); border: 1px solid var(--surface-border); border-radius: 20px; padding: 40px; text-align: center; transition: transform 0.3s;
+  }
+  .pillar-card:hover { transform: translateY(-10px); border-color: var(--accent-primary); box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2); }
+  .pillar-card svg { width: 64px; height: 64px; color: var(--accent-primary); margin-bottom: 20px; }
+  .pillar-card h3 { font-size: 24px; margin-bottom: 15px; color: white; }
+  .pillar-card p { color: var(--text-muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">EcoTravel</div>
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="education.html">Education</a>
+<a href="sustainability.html">Sustainability</a>
+<a href="community.html">Community</a>
+<a href="posts.html" id="nav-posts-link">Posts</a>
+<a href="about.html">About</a>
+</div>
+</nav>
+
+<div class="sustain-hero">
+  <h1>Our Commitment to the Earth</h1>
+</div>
+
+<div class="container" style="max-width: 1200px; padding: 0 20px; margin: 0 auto 100px auto;">
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+      <h3>Protect Biodiversity</h3>
+      <p>We strictly vet all our tours to ensure zero disruption to local wildlife habitats and breeding grounds.</p>
+    </div>
+    <div class="pillar-card">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
+      <h3>Empower Locals</h3>
+      <p>100% of our partners hire locally and invest directly back into the indigenous communities.</p>
+    </div>
+    <div class="pillar-card">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path></svg>
+      <h3>Zero Carbon</h3>
+      <p>Every trip booked through EcoTravel is 100% carbon neutrally offset automatically.</p>
+    </div>
+  </div>
+  
+  <div style="margin-top: 80px; text-align: center; color: var(--text-muted); font-size: 22px; max-width: 800px; margin-inline: auto; line-height: 1.8;">
+    <p>Sustainability is not just a buzzword. It's the only way forward. Travel should preserve the magic of our planet indefinitely, rather than treating it like a fleeting commodity to be consumed.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

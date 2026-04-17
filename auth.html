@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentication | EcoTravel</title>
+<link href="style.css" rel="stylesheet">
+<style>
+/* Dedicated Auth Overrides */
+body {
+  background: url('https://images.unsplash.com/photo-1542224566-6e85f2e6772f?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.6);
+  z-index: -1;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(11, 19, 32, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.auth-container h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.auth-container p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 10px 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.auth-tab.active {
+  color: var(--accent-primary);
+  border-bottom: 2px solid var(--accent-primary);
+}
+
+.auth-form {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form.active {
+  display: flex;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--surface-border);
+  color: white;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+</style>
+</head>
+<body>
+
+<div class="auth-container">
+  <h1>EcoTravel</h1>
+  <p>Join the movement for sustainable exploration</p>
+  
+  <div class="auth-tabs">
+    <div class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Log In</div>
+    <div class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</div>
+  </div>
+
+  <div id="formLogin" class="auth-form active">
+    <input type="email" id="loginEmail" placeholder="Email Address" autocomplete="off">
+    <input type="password" id="loginPassword" placeholder="Password" autocomplete="new-password">
+    <button class="btn primary" onclick="authSubmit('login')" style="margin-top: 10px; width: 100%;">Log In</button>
+    <a href="#" onclick="switchAuthTab('forgot'); return false;" style="color: var(--accent-primary); font-size: 14px; margin-top: 10px;">Forgot Password?</a>
+  </div>
+
+  <div id="formSignup" class="auth-form">
+    <input type="email" id="signupEmail" placeholder="Email Address" autocomplete="off">
+    <input type="password" id="signupPassword" placeholder="Password" autocomplete="new-password">
+    <button class="btn primary" onclick="authSubmit('signup')" style="margin-top: 10px; width: 100%;">Create Account</button>
+  </div>
+
+  <div id="formForgot" class="auth-form">
+    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 0;">Enter your email to receive a 6-digit code.</p>
+    <input type="email" id="forgotEmail" placeholder="Email Address" autocomplete="off">
+    <button class="btn primary" onclick="authSubmit('forgot')" style="margin-top: 10px; width: 100%;">Request OTP</button>
+    <a href="#" onclick="switchAuthTab('login'); return false;" style="color: var(--text-muted); font-size: 14px; margin-top: 10px;">Back to Login</a>
+  </div>
+
+  <div id="formReset" class="auth-form">
+    <p style="color: var(--accent-primary); font-size: 14px; margin-bottom: 0;">Check your email inbox for the OTP!</p>
+    <input type="text" id="resetOTP" placeholder="6-digit OTP Code" autocomplete="off">
+    <input type="password" id="resetPassword" placeholder="New Password" autocomplete="new-password">
+    <button class="btn primary" onclick="authSubmit('reset')" style="margin-top: 10px; width: 100%;">Reset Password</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+  let currentResetEmail = "";
+
+  function capitalize(str) {
+      if(!str) return "";
+      return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function switchAuthTab(type) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+    
+    const tab = document.getElementById('tab' + capitalize(type));
+    if(tab) tab.classList.add('active');
+    
+    document.getElementById('form' + capitalize(type)).classList.add('active');
+  }
+
+  async function authSubmit(type) {
+    let payload = {};
+    if (type === 'login' || type === 'signup') {
+        const email = document.getElementById(type + 'Email').value;
+        const password = document.getElementById(type + 'Password').value;
+        if(!email || !password) return showToast("Please fill all fields", "error");
+        payload = { email, password };
+    } else if (type === 'forgot') {
+        const email = document.getElementById('forgotEmail').value;
+        if(!email) return showToast("Please enter an email", "error");
+        payload = { email };
+        currentResetEmail = email;
+    } else if (type === 'reset') {
+        const otp = document.getElementById('resetOTP').value;
+        const newPassword = document.getElementById('resetPassword').value;
+        if(!otp || !newPassword) return showToast("Please provide OTP and new password", "error");
+        payload = { email: currentResetEmail, otp, newPassword };
+    }
+
+    try {
+      const res = await fetch(API_BASE + '/api/auth/' + type, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      
+      if(data.success) {
+        if (type === 'login' || type === 'signup') {
+            sessionStorage.setItem("user", JSON.stringify({ email: payload.email }));
+            showToast(data.message, "success");
+            setTimeout(() => window.location.href = "index.html", 1000);
+        } else if (type === 'forgot') {
+            showToast(data.message, "success");
+            switchAuthTab('reset');
+        } else if (type === 'reset') {
+            showToast(data.message, "success");
+            switchAuthTab('login');
+        }
+      } else {
+        showToast(data.message || "Request failed", "error");
+      }
+    } catch(err) {
+      showToast("Network Error", "error");
+    }
+  }
+</script>
+</body>
+</html>
